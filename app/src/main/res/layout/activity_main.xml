@@ -23,13 +23,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp">
-        <TextView
+
+        <EditText
             android:id="@+id/computeDisplay"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="0"
-            android:textSize="60dp" />
+            android:textSize="60dp"
+            android:autofillHints="false"
+            android:inputType="none"
+            tools:ignore="LabelFor"
+            android:textAlignment="textEnd"/>
     </LinearLayout>
 
     <LinearLayout
