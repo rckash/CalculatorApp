@@ -11,13 +11,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp">
-        <TextView
-            android:id="@+id/answerDisplay"
+        <EditText
+            android:id="@+id/secondaryDisplay"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="0"
-            android:textSize="50dp" />
+            android:textSize="50dp"
+            android:autofillHints="false"
+            android:inputType="none"
+            tools:ignore="LabelFor"
+            android:textAlignment="textEnd"/>
     </LinearLayout>
 
     <LinearLayout
@@ -25,7 +29,7 @@
         android:layout_height="80dp">
 
         <EditText
-            android:id="@+id/computeDisplay"
+            android:id="@+id/mainDisplay"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -2,11 +2,9 @@ package com.example.calculatorapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.text.Selection.*
 import android.widget.Button
-import android.widget.TextView
-import androidx.core.content.res.TypedArrayUtils.getText
-import org.w3c.dom.Text
+import android.widget.EditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var computeDisplay: TextView = findViewById(R.id.computeDisplay)
+        val mainDisplay: EditText = findViewById(R.id.mainDisplay)
+        mainDisplay.showSoftInputOnFocus = false
+        val secondaryDisplay: EditText = findViewById(R.id.secondaryDisplay)
+        secondaryDisplay.showSoftInputOnFocus = false
+
         val button1: Button = findViewById(R.id.button1)
         val button2: Button = findViewById(R.id.button2)
         val button3: Button = findViewById(R.id.button3)
@@ -32,27 +34,32 @@ class MainActivity : AppCompatActivity() {
 
         button1.setOnClickListener {
             inputDisplay = inputDisplay + "1"
-            computeDisplay.text = inputDisplay
+            mainDisplay.setText(inputDisplay)
         }
 
         button2.setOnClickListener {
             inputDisplay = inputDisplay + "2"
-            computeDisplay.text = inputDisplay
+            mainDisplay.setText(inputDisplay)
         }
 
         buttonAdd.setOnClickListener {
-            computeDisplay.text = "+"
+            if (inputDisplay.endsWith("+")) {
+
+            }
+            else {
+                inputDisplay = inputDisplay + "+"
+                mainDisplay.setText(inputDisplay)
+            }
+
+            secondaryDisplay.setText(inputDisplay)
+            inputDisplay = ""
+            mainDisplay.setText("")
         }
 
         buttonEqual.setOnClickListener {
-            computeDisplay.text = "="
+            inputDisplay = inputDisplay + "="
+            mainDisplay.setText(inputDisplay)
         }
 
-
     }
-
-//    fun updateText (String: compute) {
-//
-//    }
-
-}
+    }
