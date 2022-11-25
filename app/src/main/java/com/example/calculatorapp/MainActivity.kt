@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val buttonEqual: Button = findViewById(R.id.buttonEqual)
 
         var inputDisplay: String = ""
+        var totalInt: Int = 0
 
         button1.setOnClickListener {
             inputDisplay = inputDisplay + "1"
@@ -47,18 +48,28 @@ class MainActivity : AppCompatActivity() {
 
             }
             else {
+                totalInt = totalInt + inputDisplay.toInt()
                 inputDisplay = inputDisplay + "+"
                 mainDisplay.setText(inputDisplay)
+
             }
 
             secondaryDisplay.setText(inputDisplay)
             inputDisplay = ""
             mainDisplay.setText("")
+            secondaryDisplay.setText(totalInt.toString())
         }
 
         buttonEqual.setOnClickListener {
-            inputDisplay = inputDisplay + "="
-            mainDisplay.setText(inputDisplay)
+           // totalInt = totalInt + inputDisplay.toInt()
+            //mainDisplay.setText(inputDisplay)
+            secondaryDisplay.setText(inputDisplay)
+            totalInt = totalInt + inputDisplay.toInt()
+            inputDisplay = inputDisplay + "+"
+            //secondaryDisplay.setText(inputDisplay)
+            //inputDisplay = ""
+            //mainDisplay.setText("")
+            mainDisplay.setText(totalInt.toString())
         }
 
     }
