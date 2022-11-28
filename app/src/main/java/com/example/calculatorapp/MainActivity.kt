@@ -39,18 +39,18 @@ class MainActivity : AppCompatActivity() {
         val buttonBackspace: Button = findViewById(R.id.buttonBackspace)
         val buttonC: Button = findViewById(R.id.buttonC)
 
-
-
         //variables declaration
         var inputDisplay = ""
         var int1 = 0
         var int2 = 0
-        var totalInt: Int = 0
-        var isJustPressedEqual = false
+        var totalInt = 0
+        var lastKeyPressed = ""
+        var lastExpressionUsed = ""
+
 
         //number buttons functions
         button1.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "1"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed = ""
         }
 
         button2.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -70,11 +70,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "2"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed = ""
         }
 
         button3.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "3"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button4.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -94,11 +94,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "4"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button5.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -106,11 +106,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "5"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button6.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -118,11 +118,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "6"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button7.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -130,11 +130,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "7"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button8.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -142,11 +142,11 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "8"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
         button9.setOnClickListener {
-            if (isJustPressedEqual) {
+            if (lastKeyPressed == "equal") {
                 inputDisplay = ""
                 int1 = 0
                 int2 = 0
@@ -154,142 +154,88 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "9"
             mainDisplay.setText(inputDisplay)
-            isJustPressedEqual = false
+            lastKeyPressed == ""
         }
 
+        button0.setOnClickListener {
+            if (lastKeyPressed == "equal") {
+                inputDisplay = ""
+                int1 = 0
+                int2 = 0
+                totalInt = 0
+            }
+            inputDisplay += "0"
+            mainDisplay.setText(inputDisplay)
+            lastKeyPressed == ""
+        }
 
-
-
-
-
-
+        //Clear Button
+        buttonC.setOnClickListener {
+            inputDisplay = ""
+            int1 = 0
+            int2 = 0
+            totalInt = 0
+            lastKeyPressed = ""
+            lastExpressionUsed = ""
+            mainDisplay.setText("")
+            secondaryDisplay.setText("")
+        }
 
 
         //operations buttons functions
         buttonAdd.setOnClickListener {
-            //if (inputDisplay.endsWith("+")) { }
-            //else if (inputDisplay.isEmpty()) { }
-            //else {
-                if (isJustPressedEqual) {
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else {
-                    if (int1 == 0) {
-                        int1 = inputDisplay.toInt()
-                        totalInt = int1
-                    }
-                    else {
-                        int2 = inputDisplay.toInt()
-                        totalInt += int2
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                mainDisplay.setText("")
-                inputDisplay = ""
-                isJustPressedEqual = false
-           // }
-
+            if (int1 == 0) {
+                int1 = inputDisplay.toInt()
+                secondaryDisplay.setText(int1.toString() + "+")
+            }
+            else {
+            }
+            mainDisplay.setText("")
+            inputDisplay = ""
+            lastKeyPressed = "add"
+            lastExpressionUsed = "add"
         }
 
         buttonSubtract.setOnClickListener {
-            if (inputDisplay.endsWith("+")) { }
-            else if (inputDisplay.isEmpty()) { }
-            else {
-                if (isJustPressedEqual) {
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else {
-                    if (int1 == 0) {
-                        int1 = inputDisplay.toInt()
-                        totalInt = int1
-                    }
-                    else {
-                        int2 = inputDisplay.toInt()
-                        totalInt -= int2
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                mainDisplay.setText("")
-                inputDisplay = ""
-                isJustPressedEqual = false
+            if (int1 == 0) {
+                int1 = inputDisplay.toInt()
+                secondaryDisplay.setText(int1.toString() + "-")
             }
-
+            else {
+            }
+            mainDisplay.setText("")
+            inputDisplay = ""
+            lastKeyPressed = "subtract"
+            lastExpressionUsed = "subtract"
         }
 
-        buttonMultiply.setOnClickListener {
-            if (inputDisplay.endsWith("+")) { }
-            else if (inputDisplay.isEmpty()) { }
+        buttonEqual.setOnClickListener {
+            if (lastKeyPressed == "equal") {
+                secondaryDisplay.setText(totalInt.toString())
+                mainDisplay.setText(totalInt.toString())
+            }
             else {
-                if (isJustPressedEqual) {
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else {
-                    if (int1 == 0) {
-                        int1 = inputDisplay.toInt()
-                        totalInt = int1
-                    }
-                    else {
+                when (lastExpressionUsed) {
+                    "add" -> {
                         int2 = inputDisplay.toInt()
-                        totalInt += int2
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
+                        mainDisplay.setText(totalInt.toString())
                     }
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                mainDisplay.setText("")
-                inputDisplay = ""
-                isJustPressedEqual = false
-            }
-
-        }
-
-        buttonDivide.setOnClickListener {
-            if (inputDisplay.endsWith("+")) { }
-            else if (inputDisplay.isEmpty()) { }
-            else {
-                if (isJustPressedEqual) {
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else {
-                    if (int1 == 0) {
-                        int1 = inputDisplay.toInt()
-                        totalInt = int1
-                    }
-                    else {
+                    "subtract" -> {
                         int2 = inputDisplay.toInt()
-                        totalInt += int2
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
+                        mainDisplay.setText(totalInt.toString())
                     }
-                    secondaryDisplay.setText(totalInt.toString() + "+")
+                    else -> {
+                        mainDisplay.setText(totalInt.toString())
+                    }
                 }
-                mainDisplay.setText("")
-                inputDisplay = ""
-                isJustPressedEqual = false
             }
+            lastExpressionUsed = ""
+            lastKeyPressed = "equal"
         }
-
-
-
-
-
-
-
-
-            buttonEqual.setOnClickListener {
-                if (inputDisplay.endsWith("+")) { }
-                else if (inputDisplay.isEmpty()) { mainDisplay.setText(totalInt.toString()) }
-                else {
-                    if (isJustPressedEqual) { }
-                    else {
-                        if (totalInt == 0) {
-                            secondaryDisplay.setText(inputDisplay)
-                        }
-                        else {
-                            secondaryDisplay.setText(totalInt.toString() + "+" + inputDisplay)
-                        }
-                        totalInt += inputDisplay.toInt()
-                    }
-                    mainDisplay.setText(totalInt.toString())
-                }
-                isJustPressedEqual = true
-            }
-
     }
 }
+
