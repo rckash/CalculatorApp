@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         //variables declaration
         var inputDisplay = ""
-        var int1 = 0
-        var int2 = 0
+        var int1: Int = 0
+        var int2: Int = 0
         var totalInt = 0
         var lastKeyPressed = ""
         var lastExpressionUsed = ""
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "3"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button4.setOnClickListener {
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "4"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button5.setOnClickListener {
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "5"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button6.setOnClickListener {
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "6"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button7.setOnClickListener {
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "7"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button8.setOnClickListener {
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "8"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button9.setOnClickListener {
@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "9"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         button0.setOnClickListener {
@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
             }
             inputDisplay += "0"
             mainDisplay.setText(inputDisplay)
-            lastKeyPressed == ""
+            lastKeyPressed = ""
         }
 
         //Clear Button
@@ -184,11 +184,49 @@ class MainActivity : AppCompatActivity() {
 
         //operations buttons functions
         buttonAdd.setOnClickListener {
-            if (int1 == 0) {
-                int1 = inputDisplay.toInt()
+            if (int1 == 0 && lastExpressionUsed.isBlank()) {
+                if (inputDisplay.isBlank()) {
+                    int1 = 0
+                }
+                else {
+                    int1 = inputDisplay.toInt()
+                }
                 secondaryDisplay.setText(int1.toString() + "+")
+                totalInt = int1
             }
             else {
+                if (lastKeyPressed == "add" && lastExpressionUsed == "") {
+                    totalInt += inputDisplay.toInt()
+                    secondaryDisplay.setText(totalInt.toString() + "+")
+                }
+                else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
+                    int1 = totalInt
+                    int2 = inputDisplay.toInt()
+                    totalInt = int1 + int2
+                    secondaryDisplay.setText(totalInt.toString() + "+")
+                }
+                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                    secondaryDisplay.setText(totalInt.toString() + "+")
+                }
+                //for subtract
+                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
+                    if (inputDisplay.isBlank()) {
+                        int1 = 0
+                    }
+                    else {
+                        int1 = inputDisplay.toInt()
+                    }
+                    secondaryDisplay.setText(totalInt.toString() + "+")
+                }
+                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                    int2 = inputDisplay.toInt()
+                    int1 = totalInt
+                    totalInt = int1 + int2
+                    secondaryDisplay.setText(totalInt.toString() + "+")
+                }
+
+
+
             }
             mainDisplay.setText("")
             inputDisplay = ""
@@ -197,16 +235,36 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonSubtract.setOnClickListener {
-            if (int1 == 0) {
-                int1 = inputDisplay.toInt()
+            if (int1 == 0 && lastExpressionUsed.isBlank()) {
+                if (inputDisplay.isBlank()) {
+                    int1 = 0
+                }
+                else {
+                    int1 = inputDisplay.toInt()
+                }
                 secondaryDisplay.setText(int1.toString() + "-")
+                totalInt = int1
             }
             else {
+                if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
+                    totalInt += inputDisplay.toInt()
+                    secondaryDisplay.setText(totalInt.toString() + "-")
+                }
+                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                    int2 = inputDisplay.toInt()
+                    int1 = totalInt
+                    totalInt = int1 - int2
+                    secondaryDisplay.setText(totalInt.toString() + "-")
+                }
+                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                    secondaryDisplay.setText(totalInt.toString() + "-")
+                }
             }
             mainDisplay.setText("")
             inputDisplay = ""
             lastKeyPressed = "subtract"
             lastExpressionUsed = "subtract"
+
         }
 
         buttonEqual.setOnClickListener {
@@ -217,19 +275,38 @@ class MainActivity : AppCompatActivity() {
             else {
                 when (lastExpressionUsed) {
                     "add" -> {
-                        int2 = inputDisplay.toInt()
+                        if (inputDisplay.isBlank()) {
+                            int2 = 0
+                        }
+                        else {
+                            int2 = inputDisplay.toInt()
+                        }
+                        int1 = totalInt
                         totalInt = int1 + int2
                         secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
                         mainDisplay.setText(totalInt.toString())
                     }
                     "subtract" -> {
-                        int2 = inputDisplay.toInt()
+                        if (inputDisplay.isBlank()) {
+                            int2 = 0
+                        }
+                        else {
+                            int2 = inputDisplay.toInt()
+                        }
+                        int1 = totalInt
                         totalInt = int1 - int2
                         secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
                         mainDisplay.setText(totalInt.toString())
                     }
                     else -> {
-                        mainDisplay.setText(totalInt.toString())
+                        if (inputDisplay.isBlank()) {
+                            totalInt = 0
+                        }
+                        else {
+                            totalInt = inputDisplay.toInt()
+                            secondaryDisplay.setText(totalInt.toString())
+                            mainDisplay.setText(totalInt.toString())
+                        }
                     }
                 }
             }
