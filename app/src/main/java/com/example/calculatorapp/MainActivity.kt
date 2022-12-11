@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         var totalInt = 0F
         var lastKeyPressed = ""
         var lastExpressionUsed = ""
-        var decimalFormat = DecimalFormat("#.##")
+        var isFloatWhole = false
 
 
         //number buttons functions
@@ -181,6 +181,19 @@ class MainActivity : AppCompatActivity() {
             lastExpressionUsed = ""
             mainDisplay.setText("")
             secondaryDisplay.setText("")
+        }
+
+        //misc buttons
+        buttonDecimal.setOnClickListener {
+            if (lastKeyPressed == "equal") {
+                inputDisplay = ""
+                int1 = 0F
+                int2 = 0F
+                totalInt = 0F
+            }
+            inputDisplay += "."
+            mainDisplay.setText(inputDisplay)
+            lastKeyPressed = ""
         }
 
 
@@ -622,8 +635,26 @@ class MainActivity : AppCompatActivity() {
                         }
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
-                        mainDisplay.setText(totalInt.toString())
+
+                        //Whole Number Check
+                        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+                            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toInt().toString())
+                        }
+                        else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+                            secondaryDisplay.setText(int1.toString() + "+" + int2.toInt().toString())
+                        }
+                        else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+                            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toString())
+                        }
+                        else {
+                            secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
+                        }
+                        if (totalInt % 1.0 == 0.0) {
+                            mainDisplay.setText(totalInt.toInt().toString())
+                        }
+                        else {
+                            mainDisplay.setText(totalInt.toString())
+                        }
                     }
                     "subtract" -> {
                         if (inputDisplay.isBlank()) {
@@ -677,5 +708,7 @@ class MainActivity : AppCompatActivity() {
             lastKeyPressed = "equal"
         }
     }
+
 }
+
 
