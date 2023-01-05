@@ -204,626 +204,561 @@ class MainActivity : AppCompatActivity() {
             if (int1 == 0F && lastExpressionUsed.isBlank()) {
                 if (inputDisplay.isBlank()) {
                     int1 = 0F
-                }
-                else {
+                } else {
                     int1 = inputDisplay.toFloat()
                 }
-                WholeNumberCheckInt1(int1, secondaryDisplay, lastKeyPressed)
-                totalInt = int1
-            }
-            else {
-                if (lastKeyPressed == "add" && lastExpressionUsed == "") {
-                    totalInt += inputDisplay.toFloat()
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
-                    int1 = totalInt
-                    int2 = inputDisplay.toFloat()
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                //for subtract
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                //for multiply
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-                //for divide
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for equal
-                else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "+")
-                }
-
-
-
-            }
-
-
-            mainDisplay.setText("")
-            inputDisplay = ""
-            lastKeyPressed = "add"
-            lastExpressionUsed = "add"
-        }
-
-        buttonSubtract.setOnClickListener {
-            //secondaryDisplay.setText("")
-
-            if (int1 == 0F && lastExpressionUsed.isBlank()) {
-                if (inputDisplay.isBlank()) {
-                    int1 = 0F
-                }
-                else {
-                    int1 = inputDisplay.toFloat()
-                }
-                WholeNumberCheckInt1(int1, secondaryDisplay, lastKeyPressed)
-                totalInt = int1
-            }
-            else {
-                if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
-                    totalInt += inputDisplay.toFloat()
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                //for add
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                //for multiply
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                //for divide
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-                //for equal
-                else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "-")
-                }
-
-            }
-            mainDisplay.setText("")
-            inputDisplay = ""
-            lastKeyPressed = "subtract"
-            lastExpressionUsed = "subtract"
-
-        }
-
-        buttonMultiply.setOnClickListener {
-            if (int1 == 0F && lastExpressionUsed.isBlank()) {
-                if (inputDisplay.isBlank()) {
-                    int1 = 0F
-                }
-                else {
-                    int1 = inputDisplay.toFloat()
-                }
-                WholeNumberCheckInt1(int1, secondaryDisplay, lastKeyPressed)
-                totalInt = int1
-            }
-            else {
-                if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
-                    totalInt += inputDisplay.toFloat()
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                //for add
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                //for subtract
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-                //for divide
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for equal
-                else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "*")
-                }
-
-            }
-            mainDisplay.setText("")
-            inputDisplay = ""
-            lastKeyPressed = "multiply"
-            lastExpressionUsed = "multiply"
-
-        }
-
-        buttonDivide.setOnClickListener {
-            if (int1 == 0F && lastExpressionUsed.isBlank()) {
-                if (inputDisplay.isBlank()) {
-                    int1 = 0F
-                }
-                else {
-                    int1 = inputDisplay.toFloat()
-                }
-                WholeNumberCheckInt1(int1, secondaryDisplay, lastKeyPressed)
-                totalInt = int1
-            }
-            else {
-                if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
-                    totalInt += inputDisplay.toFloat()
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 / int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for add
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 + int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for subtract
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 - int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for multiply
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
-                    if (inputDisplay.isBlank()) {
-                        int1 = 0F
-                    }
-                    else {
-                        int1 = inputDisplay.toFloat()
-                    }
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
-                    int2 = inputDisplay.toFloat()
-                    int1 = totalInt
-                    totalInt = int1 * int2
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-                //for equal
-                else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                    secondaryDisplay.setText(totalInt.toString() + "÷")
-                }
-
-            }
-            mainDisplay.setText("")
-            inputDisplay = ""
-            lastKeyPressed = "divide"
-            lastExpressionUsed = "divide"
-
-        }
-
-        buttonEqual.setOnClickListener {
-            if (lastKeyPressed == "equal") {
-                secondaryDisplay.setText(totalInt.toString())
-                mainDisplay.setText(totalInt.toString())
-            }
-            else {
-                when (lastExpressionUsed) {
-                    "add" -> {
-                        if (inputDisplay.isBlank()) {
-                            int2 = 0F
+//checkint1
+                if ((int1 % 1.0) == 0.0) {
+                    when (lastKeyPressed) {
+                        "add" -> {
+                            secondaryDisplay.setText(int1.toString() + "j")
                         }
-                        else {
-                            int2 = inputDisplay.toFloat()
+                        "subtract" -> {
+                            secondaryDisplay.setText(int1.toString() + "-")
                         }
+                        "multiply" -> {
+                            secondaryDisplay.setText(int1.toString() + "*")
+                        }
+                        "divide" -> {
+                            secondaryDisplay.setText(int1.toString() + "÷")
+                        }
+                        else -> {
+                            secondaryDisplay.setText(int1.toString() + "")
+                        }
+                    }
+
+//end of checkint1
+                    totalInt = int1
+                } else {
+                    if (lastKeyPressed == "add" && lastExpressionUsed == "") {
+                        totalInt += inputDisplay.toFloat()
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
                         int1 = totalInt
+                        int2 = inputDisplay.toFloat()
                         totalInt = int1 + int2
-
-                        WholeNumberCheckAdd(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "+")
                     }
-                    "subtract" -> {
+                    //for subtract
+                    else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
                         if (inputDisplay.isBlank()) {
-                            int2 = 0F
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
                         }
-                        else {
-                            int2 = inputDisplay.toFloat()
-                        }
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                        int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-
-                        WholeNumberCheckSub(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "+")
                     }
-                    "multiply" -> {
+                    //for multiply
+                    else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
                         if (inputDisplay.isBlank()) {
-                            int2 = 0F
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
                         }
-                        else {
-                            int2 = inputDisplay.toFloat()
-                        }
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
+                        int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-
-                        WholeNumberCheckMul(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "+")
                     }
-                    "divide" -> {
+                    //for divide
+                    else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
                         if (inputDisplay.isBlank()) {
-                            int2 = 0F
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
                         }
-                        else {
-                            int2 = inputDisplay.toFloat()
-                        }
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
+                        int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-
-                        WholeNumberCheckDiv(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
                     }
-                    else -> {
+                    //for equal
+                    else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "+")
+                    }
+
+
+                }
+
+
+                mainDisplay.setText("")
+                inputDisplay = ""
+                lastKeyPressed = "add"
+                lastExpressionUsed = "add"
+            }
+
+            buttonSubtract.setOnClickListener {
+                //secondaryDisplay.setText("")
+
+                if (int1 == 0F && lastExpressionUsed.isBlank()) {
+                    if (inputDisplay.isBlank()) {
+                        int1 = 0F
+                    } else {
+                        int1 = inputDisplay.toFloat()
+                    }
+
+                    totalInt = int1
+                } else {
+                    if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
+                        totalInt += inputDisplay.toFloat()
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    }
+                    //for add
+                    else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
                         if (inputDisplay.isBlank()) {
-                            totalInt = 0F
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
                         }
-                        else {
-                            totalInt = inputDisplay.toFloat()
-                            secondaryDisplay.setText(totalInt.toString())
-                            mainDisplay.setText(totalInt.toString())
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    }
+                    //for multiply
+                    else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    }
+                    //for divide
+                    else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    }
+                    //for equal
+                    else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "-")
+                    }
+
+                }
+                mainDisplay.setText("")
+                inputDisplay = ""
+                lastKeyPressed = "subtract"
+                lastExpressionUsed = "subtract"
+
+            }
+
+            buttonMultiply.setOnClickListener {
+                if (int1 == 0F && lastExpressionUsed.isBlank()) {
+                    if (inputDisplay.isBlank()) {
+                        int1 = 0F
+                    } else {
+                        int1 = inputDisplay.toFloat()
+                    }
+
+                    totalInt = int1
+                } else {
+                    if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
+                        totalInt += inputDisplay.toFloat()
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    }
+                    //for add
+                    else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    }
+                    //for subtract
+                    else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    }
+                    //for divide
+                    else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+                    //for equal
+                    else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "*")
+                    }
+
+                }
+                mainDisplay.setText("")
+                inputDisplay = ""
+                lastKeyPressed = "multiply"
+                lastExpressionUsed = "multiply"
+
+            }
+
+            buttonDivide.setOnClickListener {
+                if (int1 == 0F && lastExpressionUsed.isBlank()) {
+                    if (inputDisplay.isBlank()) {
+                        int1 = 0F
+                    } else {
+                        int1 = inputDisplay.toFloat()
+                    }
+
+                    totalInt = int1
+                } else {
+                    if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
+                        totalInt += inputDisplay.toFloat()
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 / int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+                    //for add
+                    else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 + int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+                    //for subtract
+                    else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 - int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+                    //for multiply
+                    else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
+                        if (inputDisplay.isBlank()) {
+                            int1 = 0F
+                        } else {
+                            int1 = inputDisplay.toFloat()
+                        }
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
+                        int2 = inputDisplay.toFloat()
+                        int1 = totalInt
+                        totalInt = int1 * int2
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+                    //for equal
+                    else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
+                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                    }
+
+                }
+                mainDisplay.setText("")
+                inputDisplay = ""
+                lastKeyPressed = "divide"
+                lastExpressionUsed = "divide"
+
+            }
+
+            buttonEqual.setOnClickListener {
+                if (lastKeyPressed == "equal") {
+                    secondaryDisplay.setText(totalInt.toString())
+                    mainDisplay.setText(totalInt.toString())
+                } else {
+                    when (lastExpressionUsed) {
+                        "add" -> {
+                            if (inputDisplay.isBlank()) {
+                                int2 = 0F
+                            } else {
+                                int2 = inputDisplay.toFloat()
+                            }
+                            int1 = totalInt
+                            totalInt = int1 + int2
+
+                            WholeNumberCheckAdd(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        }
+                        "subtract" -> {
+                            if (inputDisplay.isBlank()) {
+                                int2 = 0F
+                            } else {
+                                int2 = inputDisplay.toFloat()
+                            }
+                            int1 = totalInt
+                            totalInt = int1 - int2
+
+                            WholeNumberCheckSub(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        }
+                        "multiply" -> {
+                            if (inputDisplay.isBlank()) {
+                                int2 = 0F
+                            } else {
+                                int2 = inputDisplay.toFloat()
+                            }
+                            int1 = totalInt
+                            totalInt = int1 * int2
+
+                            WholeNumberCheckMul(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        }
+                        "divide" -> {
+                            if (inputDisplay.isBlank()) {
+                                int2 = 0F
+                            } else {
+                                int2 = inputDisplay.toFloat()
+                            }
+                            int1 = totalInt
+                            totalInt = int1 / int2
+
+                            WholeNumberCheckDiv(int1, int2, secondaryDisplay, totalInt, mainDisplay)
+                        }
+                        else -> {
+                            if (inputDisplay.isBlank()) {
+                                totalInt = 0F
+                            } else {
+                                totalInt = inputDisplay.toFloat()
+                                secondaryDisplay.setText(totalInt.toString())
+                                mainDisplay.setText(totalInt.toString())
+                            }
                         }
                     }
                 }
+                lastExpressionUsed = ""
+                lastKeyPressed = "equal"
             }
-            lastExpressionUsed = ""
-            lastKeyPressed = "equal"
         }
     }
-
-    private fun WholeNumberCheckAdd(
-        int1: Float,
-        int2: Float,
-        secondaryDisplay: EditText,
-        totalInt: Float,
-        mainDisplay: EditText
-    ) {
-        //Whole Number Check
-        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toInt().toString())
-        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toString() + "+" + int2.toInt().toString())
-        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toString())
-        } else {
-            secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
-        }
-        if (totalInt % 1.0 == 0.0) {
-            mainDisplay.setText(totalInt.toInt().toString())
-        } else {
-            mainDisplay.setText(totalInt.toString())
-        }
-    }
-
-    private fun WholeNumberCheckSub(
-        int1: Float,
-        int2: Float,
-        secondaryDisplay: EditText,
-        totalInt: Float,
-        mainDisplay: EditText
-    ) {
-        //Whole Number Check
-        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toInt().toString())
-        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toString() + "-" + int2.toInt().toString())
-        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toString())
-        } else {
-            secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
-        }
-        if (totalInt % 1.0 == 0.0) {
-            mainDisplay.setText(totalInt.toInt().toString())
-        } else {
-            mainDisplay.setText(totalInt.toString())
-        }
-    }
-
-    private fun WholeNumberCheckMul(
-        int1: Float,
-        int2: Float,
-        secondaryDisplay: EditText,
-        totalInt: Float,
-        mainDisplay: EditText
-    ) {
-        //Whole Number Check
-        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toInt().toString())
-        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toString() + "x" + int2.toInt().toString())
-        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toString())
-        } else {
-            secondaryDisplay.setText(int1.toString() + "x" + int2.toString())
-        }
-        if (totalInt % 1.0 == 0.0) {
-            mainDisplay.setText(totalInt.toInt().toString())
-        } else {
-            mainDisplay.setText(totalInt.toString())
-        }
-    }
-
-    private fun WholeNumberCheckDiv(
-        int1: Float,
-        int2: Float,
-        secondaryDisplay: EditText,
-        totalInt: Float,
-        mainDisplay: EditText
-    ) {
-        //Whole Number Check
-        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toInt().toString())
-        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-            secondaryDisplay.setText(int1.toString() + "÷" + int2.toInt().toString())
-        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-            secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toString())
-        } else {
-            secondaryDisplay.setText(int1.toString() + "÷" + int2.toString())
-        }
-        if (totalInt % 1.0 == 0.0) {
-            mainDisplay.setText(totalInt.toInt().toString())
-        } else {
-            mainDisplay.setText(totalInt.toString())
-        }
-    }
-
-    public fun WholeNumberCheckInt1(
-        int1: Float,
-        secondaryDisplay: EditText,
-        lastKeyPressed: String
-    ) {
-        //Whole Number Check
-        if ((int1 % 1.0) == 0.0) {
-            when (lastKeyPressed) {
-                "add" -> {
-                    secondaryDisplay.setText(int1.toString() + "j")
-                }
-                "subtract" -> {
-                    secondaryDisplay.setText(int1.toInt().toString() + "-")
-                }
-                "multiply" -> {
-                    secondaryDisplay.setText(int1.toInt().toString() + "*")
-                }
-                "divide" -> {
-                    secondaryDisplay.setText(int1.toInt().toString() + "÷")
-                }
-                else -> {
-                    secondaryDisplay.setText(int1.toInt().toString() + "k")
-                }
-            }
-        } else {
-//            if (lastKeyPressed == "add") {
-//                secondaryDisplay.setText(int1.toString() + "j")
-//            }
-//            else {
-                secondaryDisplay.setText(int1.toString() + "j")
-//            }
-
-        }
-    }
-
 }
+
+        fun WholeNumberCheckAdd(
+            int1: Float,
+            int2: Float,
+            secondaryDisplay: EditText,
+            totalInt: Float,
+            mainDisplay: EditText
+        ) {
+            //Whole Number Check
+            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toInt().toString())
+            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toString() + "+" + int2.toInt().toString())
+            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toString())
+            } else {
+                secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
+            }
+            if (totalInt % 1.0 == 0.0) {
+                mainDisplay.setText(totalInt.toInt().toString())
+            } else {
+                mainDisplay.setText(totalInt.toString())
+            }
+        }
+
+        fun WholeNumberCheckSub(
+            int1: Float,
+            int2: Float,
+            secondaryDisplay: EditText,
+            totalInt: Float,
+            mainDisplay: EditText
+        ) {
+            //Whole Number Check
+            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toInt().toString())
+            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toString() + "-" + int2.toInt().toString())
+            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toString())
+            } else {
+                secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
+            }
+            if (totalInt % 1.0 == 0.0) {
+                mainDisplay.setText(totalInt.toInt().toString())
+            } else {
+                mainDisplay.setText(totalInt.toString())
+            }
+        }
+
+        fun WholeNumberCheckMul(
+            int1: Float,
+            int2: Float,
+            secondaryDisplay: EditText,
+            totalInt: Float,
+            mainDisplay: EditText
+        ) {
+            //Whole Number Check
+            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toInt().toString())
+            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toString() + "x" + int2.toInt().toString())
+            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toString())
+            } else {
+                secondaryDisplay.setText(int1.toString() + "x" + int2.toString())
+            }
+            if (totalInt % 1.0 == 0.0) {
+                mainDisplay.setText(totalInt.toInt().toString())
+            } else {
+                mainDisplay.setText(totalInt.toString())
+            }
+        }
+
+        fun WholeNumberCheckDiv(
+            int1: Float,
+            int2: Float,
+            secondaryDisplay: EditText,
+            totalInt: Float,
+            mainDisplay: EditText
+        ) {
+            //Whole Number Check
+            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toInt().toString())
+            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+                secondaryDisplay.setText(int1.toString() + "÷" + int2.toInt().toString())
+            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+                secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toString())
+            } else {
+                secondaryDisplay.setText(int1.toString() + "÷" + int2.toString())
+            }
+            if (totalInt % 1.0 == 0.0) {
+                mainDisplay.setText(totalInt.toInt().toString())
+            } else {
+                mainDisplay.setText(totalInt.toString())
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
