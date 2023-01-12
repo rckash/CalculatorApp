@@ -174,9 +174,9 @@ class MainActivity : AppCompatActivity() {
         //Clear Button
         buttonC.setOnClickListener {
             inputDisplay = ""
-            int1 = 0F
-            int2 = 0F
-            totalInt = 0F
+            int1 = 0.0F
+            int2 = 0.0F
+            totalInt = 0.0F
             lastKeyPressed = ""
             lastExpressionUsed = ""
             mainDisplay.setText("")
@@ -187,9 +187,9 @@ class MainActivity : AppCompatActivity() {
         buttonDecimal.setOnClickListener {
             if (lastKeyPressed == "equal") {
                 inputDisplay = ""
-                int1 = 0F
-                int2 = 0F
-                totalInt = 0F
+                int1 = 0.0F
+                int2 = 0.0F
+                totalInt = 0.0F
             }
             inputDisplay += "."
             mainDisplay.setText(inputDisplay)
@@ -206,40 +206,41 @@ class MainActivity : AppCompatActivity() {
                     int1 = 0F
                 } else {
                     int1 = inputDisplay.toFloat()
-                }
-//checkint1
-                if ((int1 % 1.0) == 0.0) {
-                    when (lastKeyPressed) {
-                        "add" -> {
-                            secondaryDisplay.setText(int1.toString() + "j")
-                        }
-                        "subtract" -> {
-                            secondaryDisplay.setText(int1.toString() + "-")
-                        }
-                        "multiply" -> {
-                            secondaryDisplay.setText(int1.toString() + "*")
-                        }
-                        "divide" -> {
-                            secondaryDisplay.setText(int1.toString() + "÷")
-                        }
-                        else -> {
-                            secondaryDisplay.setText(int1.toString() + "")
-                        }
+                    if ((int1 % 1.0) == 0.0) {
+                        secondaryDisplay.setText(int1.toInt().toString() + "+")
                     }
+                    else {
+                        secondaryDisplay.setText(int1.toString() + "+")
+                    }
+                }
+                totalInt = int1
 
-//end of checkint1
-                    totalInt = int1
-                } else {
+            } else {
                     if (lastKeyPressed == "add" && lastExpressionUsed == "") {
                         totalInt += inputDisplay.toFloat()
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
                         int1 = totalInt
                         int2 = inputDisplay.toFloat()
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     }
                     //for subtract
                     else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
@@ -247,18 +248,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "+")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "+")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        //secondaryDisplay.setText(totalInt.toString() + "+")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     }
                     //for multiply
                     else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
@@ -266,18 +283,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "+")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "+")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        //secondaryDisplay.setText(totalInt.toString() + "+")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     }
                     //for divide
                     else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
@@ -285,25 +318,44 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "+")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "+")
+                            }
                         }
                         secondaryDisplay.setText(totalInt.toString() + "÷")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     }
                     //for equal
                     else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "+")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "+")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "+")
+                        }
                     }
-
-
                 }
 
 
@@ -321,20 +373,36 @@ class MainActivity : AppCompatActivity() {
                         int1 = 0F
                     } else {
                         int1 = inputDisplay.toFloat()
+                        int1CheckSubtract(int1, secondaryDisplay)
                     }
 
                     totalInt = int1
                 } else {
                     if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
                         totalInt += inputDisplay.toFloat()
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     }
                     //for add
                     else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
@@ -342,18 +410,29 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            int1CheckSubtract(int1, secondaryDisplay)
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        //secondaryDisplay.setText(totalInt.toString() + "-")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     }
                     //for multiply
                     else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
@@ -361,18 +440,29 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            int1CheckSubtract(int1, secondaryDisplay)
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        //secondaryDisplay.setText(totalInt.toString() + "-")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     }
                     //for divide
                     else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
@@ -380,22 +470,38 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            int1CheckSubtract(int1, secondaryDisplay)
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        //secondaryDisplay.setText(totalInt.toString() + "-")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     }
                     //for equal
                     else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "-")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "-")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "-")
+                        }
                     }
 
                 }
@@ -412,20 +518,41 @@ class MainActivity : AppCompatActivity() {
                         int1 = 0F
                     } else {
                         int1 = inputDisplay.toFloat()
+                        if ((int1 % 1.0) == 0.0) {
+                            secondaryDisplay.setText(int1.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(int1.toString() + "*")
+                        }
                     }
 
                     totalInt = int1
                 } else {
                     if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
                         totalInt += inputDisplay.toFloat()
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     }
                     //for add
                     else if (lastKeyPressed == "add" && lastExpressionUsed == "add") {
@@ -433,18 +560,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "*")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "*")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        //secondaryDisplay.setText(totalInt.toString() + "*")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     }
                     //for subtract
                     else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
@@ -452,18 +595,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "*")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "*")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                       // secondaryDisplay.setText(totalInt.toString() + "*")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     }
                     //for divide
                     else if (lastKeyPressed == "divide" && lastExpressionUsed == "divide") {
@@ -471,22 +630,43 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "*")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "*")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        //secondaryDisplay.setText(totalInt.toString() + "÷")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     } else if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     }
                     //for equal
                     else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "*")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "*")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "*")
+                        }
                     }
 
                 }
@@ -503,18 +683,34 @@ class MainActivity : AppCompatActivity() {
                         int1 = 0F
                     } else {
                         int1 = inputDisplay.toFloat()
+                        if ((int1 % 1.0) == 0.0) {
+                            secondaryDisplay.setText(int1.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(int1.toString() + "÷")
+                        }
                     }
 
                     totalInt = int1
                 } else {
                     if (lastKeyPressed == "divide" && lastExpressionUsed == "") {
                         totalInt += inputDisplay.toFloat()
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "divide") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 / int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "") {
                         secondaryDisplay.setText(totalInt.toString() + "÷")
                     }
@@ -524,18 +720,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "÷")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "÷")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+//                        secondaryDisplay.setText(totalInt.toString() + "÷")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "add") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     } else if (lastKeyPressed == "add" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 + int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     }
                     //for subtract
                     else if (lastKeyPressed == "subtract" && lastExpressionUsed == "subtract") {
@@ -543,18 +755,34 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "÷")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "÷")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+//                        secondaryDisplay.setText(totalInt.toString() + "÷")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "subtract") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     } else if (lastKeyPressed == "subtract" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 - int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     }
                     //for multiply
                     else if (lastKeyPressed == "multiply" && lastExpressionUsed == "multiply") {
@@ -562,22 +790,43 @@ class MainActivity : AppCompatActivity() {
                             int1 = 0F
                         } else {
                             int1 = inputDisplay.toFloat()
+                            if ((int1 % 1.0) == 0.0) {
+                                secondaryDisplay.setText(int1.toInt().toString() + "÷")
+                            }
+                            else {
+                                secondaryDisplay.setText(int1.toString() + "÷")
+                            }
                         }
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+//                        secondaryDisplay.setText(totalInt.toString() + "÷")
                     } else if (lastKeyPressed == "" && lastExpressionUsed == "multiply") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     } else if (lastKeyPressed == "multiply" && lastExpressionUsed == "") {
                         int2 = inputDisplay.toFloat()
                         int1 = totalInt
                         totalInt = int1 * int2
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     }
                     //for equal
                     else if (lastKeyPressed == "equal" && lastExpressionUsed == "") {
-                        secondaryDisplay.setText(totalInt.toString() + "÷")
+                        if ((totalInt % 1.0) == 0.0) {
+                            secondaryDisplay.setText(totalInt.toInt().toString() + "÷")
+                        }
+                        else {
+                            secondaryDisplay.setText(totalInt.toString() + "÷")
+                        }
                     }
 
                 }
@@ -590,8 +839,18 @@ class MainActivity : AppCompatActivity() {
 
             buttonEqual.setOnClickListener {
                 if (lastKeyPressed == "equal") {
-                    secondaryDisplay.setText(totalInt.toString())
-                    mainDisplay.setText(totalInt.toString())
+                    if ((totalInt % 1.0) == 0.0) {
+                        secondaryDisplay.setText(totalInt.toInt().toString())
+                    }
+                    else {
+                        secondaryDisplay.setText(totalInt.toString())
+                    }
+                    if ((totalInt % 1.0) == 0.0) {
+                        mainDisplay.setText(totalInt.toInt().toString())
+                    }
+                    else {
+                        mainDisplay.setText(totalInt.toString())
+                    }
                 } else {
                     when (lastExpressionUsed) {
                         "add" -> {
@@ -653,104 +912,112 @@ class MainActivity : AppCompatActivity() {
                 lastKeyPressed = "equal"
             }
         }
+
+    private fun int1CheckSubtract(int1: Float, secondaryDisplay: EditText) {
+        if ((int1 % 1.0) == 0.0) {
+            secondaryDisplay.setText(int1.toInt().toString() + "-")
+        } else {
+            secondaryDisplay.setText(int1.toString() + "-")
+        }
     }
 }
 
-        fun WholeNumberCheckAdd(
-            int1: Float,
-            int2: Float,
-            secondaryDisplay: EditText,
-            totalInt: Float,
-            mainDisplay: EditText
-        ) {
-            //Whole Number Check
-            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toInt().toString())
-            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toString() + "+" + int2.toInt().toString())
-            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toString())
-            } else {
-                secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
-            }
-            if (totalInt % 1.0 == 0.0) {
-                mainDisplay.setText(totalInt.toInt().toString())
-            } else {
-                mainDisplay.setText(totalInt.toString())
-            }
-        }
 
-        fun WholeNumberCheckSub(
-            int1: Float,
-            int2: Float,
-            secondaryDisplay: EditText,
-            totalInt: Float,
-            mainDisplay: EditText
-        ) {
-            //Whole Number Check
-            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toInt().toString())
-            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toString() + "-" + int2.toInt().toString())
-            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toString())
-            } else {
-                secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
-            }
-            if (totalInt % 1.0 == 0.0) {
-                mainDisplay.setText(totalInt.toInt().toString())
-            } else {
-                mainDisplay.setText(totalInt.toString())
-            }
+    fun WholeNumberCheckAdd(
+        int1: Float,
+        int2: Float,
+        secondaryDisplay: EditText,
+        totalInt: Float,
+        mainDisplay: EditText
+    ) {
+        //Whole Number Check
+        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toInt().toString())
+        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toString() + "+" + int2.toInt().toString())
+        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "+" + int2.toString())
+        } else {
+            secondaryDisplay.setText(int1.toString() + "+" + int2.toString())
         }
+        if (totalInt % 1.0 == 0.0) {
+            mainDisplay.setText(totalInt.toInt().toString())
+        } else {
+            mainDisplay.setText(totalInt.toString())
+        }
+    }
 
-        fun WholeNumberCheckMul(
-            int1: Float,
-            int2: Float,
-            secondaryDisplay: EditText,
-            totalInt: Float,
-            mainDisplay: EditText
-        ) {
-            //Whole Number Check
-            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toInt().toString())
-            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toString() + "x" + int2.toInt().toString())
-            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toString())
-            } else {
-                secondaryDisplay.setText(int1.toString() + "x" + int2.toString())
-            }
-            if (totalInt % 1.0 == 0.0) {
-                mainDisplay.setText(totalInt.toInt().toString())
-            } else {
-                mainDisplay.setText(totalInt.toString())
-            }
+    fun WholeNumberCheckSub(
+        int1: Float,
+        int2: Float,
+        secondaryDisplay: EditText,
+        totalInt: Float,
+        mainDisplay: EditText
+    ) {
+        //Whole Number Check
+        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toInt().toString())
+        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toString() + "-" + int2.toInt().toString())
+        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "-" + int2.toString())
+        } else {
+            secondaryDisplay.setText(int1.toString() + "-" + int2.toString())
         }
+        if (totalInt % 1.0 == 0.0) {
+            mainDisplay.setText(totalInt.toInt().toString())
+        } else {
+            mainDisplay.setText(totalInt.toString())
+        }
+    }
 
-        fun WholeNumberCheckDiv(
-            int1: Float,
-            int2: Float,
-            secondaryDisplay: EditText,
-            totalInt: Float,
-            mainDisplay: EditText
-        ) {
-            //Whole Number Check
-            if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toInt().toString())
-            } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
-                secondaryDisplay.setText(int1.toString() + "÷" + int2.toInt().toString())
-            } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
-                secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toString())
-            } else {
-                secondaryDisplay.setText(int1.toString() + "÷" + int2.toString())
-            }
-            if (totalInt % 1.0 == 0.0) {
-                mainDisplay.setText(totalInt.toInt().toString())
-            } else {
-                mainDisplay.setText(totalInt.toString())
-            }
+    fun WholeNumberCheckMul(
+        int1: Float,
+        int2: Float,
+        secondaryDisplay: EditText,
+        totalInt: Float,
+        mainDisplay: EditText
+    ) {
+        //Whole Number Check
+        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toInt().toString())
+        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toString() + "x" + int2.toInt().toString())
+        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "x" + int2.toString())
+        } else {
+            secondaryDisplay.setText(int1.toString() + "x" + int2.toString())
         }
+        if (totalInt % 1.0 == 0.0) {
+            mainDisplay.setText(totalInt.toInt().toString())
+        } else {
+            mainDisplay.setText(totalInt.toString())
+        }
+    }
+
+    fun WholeNumberCheckDiv(
+        int1: Float,
+        int2: Float,
+        secondaryDisplay: EditText,
+        totalInt: Float,
+        mainDisplay: EditText
+    ) {
+        //Whole Number Check
+        if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toInt().toString())
+        } else if (((int1 % 1.0) != 0.0) && ((int2 % 1.0) == 0.0)) {
+            secondaryDisplay.setText(int1.toString() + "÷" + int2.toInt().toString())
+        } else if (((int1 % 1.0) == 0.0) && ((int2 % 1.0) != 0.0)) {
+            secondaryDisplay.setText(int1.toInt().toString() + "÷" + int2.toString())
+        } else {
+            secondaryDisplay.setText(int1.toString() + "÷" + int2.toString())
+        }
+        if (totalInt % 1.0 == 0.0) {
+            mainDisplay.setText(totalInt.toInt().toString())
+        } else {
+            mainDisplay.setText(totalInt.toString())
+        }
+    }
 
 
 
