@@ -58,15 +58,6 @@
             android:backgroundTint="#3EB489"
             android:text="C" />
         <Button
-            android:id="@+id/buttonExponent"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
-            android:text="^" />
-        <Button
             android:id="@+id/buttonBackspace"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
@@ -112,15 +103,7 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
             android:text="0" />
-        <Button
-            android:id="@+id/buttonNegative"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
-            android:text="-/+" />
+
         <Button
             android:id="@+id/buttonMultiply"
             android:layout_width="wrap_content"
