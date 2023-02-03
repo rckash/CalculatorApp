@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity() {
         val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
         val buttonDivide: Button = findViewById(R.id.buttonDivide)
         val buttonEqual: Button = findViewById(R.id.buttonEqual)
-        val buttonNegative: Button = findViewById(R.id.buttonNegative)
         val buttonDecimal: Button = findViewById(R.id.buttonDecimal)
-        val buttonExponent: Button = findViewById(R.id.buttonExponent)
         val buttonBackspace: Button = findViewById(R.id.buttonBackspace)
         val buttonC: Button = findViewById(R.id.buttonC)
 
@@ -48,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         var lastKeyPressed = ""
         var lastExpressionUsed = ""
         var isFloatWhole = false
+        var toDelete = ""
 
 
         //number buttons functions
@@ -192,6 +191,13 @@ class MainActivity : AppCompatActivity() {
                 totalInt = 0.0F
             }
             inputDisplay += "."
+            mainDisplay.setText(inputDisplay)
+            lastKeyPressed = ""
+        }
+
+        buttonBackspace.setOnClickListener {
+            toDelete = inputDisplay
+            inputDisplay = toDelete.dropLast(1)
             mainDisplay.setText(inputDisplay)
             lastKeyPressed = ""
         }
@@ -900,10 +906,20 @@ class MainActivity : AppCompatActivity() {
                         else -> {
                             if (inputDisplay.isBlank()) {
                                 totalInt = 0F
-                            } else {
-                                totalInt = inputDisplay.toFloat()
-                                secondaryDisplay.setText(totalInt.toString())
-                                mainDisplay.setText(totalInt.toString())
+                                secondaryDisplay.setText(totalInt.toInt().toString())
+                                mainDisplay.setText(totalInt.toInt().toString())
+                            }
+                            else {
+                                if ((totalInt % 1.0) == 0.0) {
+                                    totalInt = inputDisplay.toInt().toFloat()
+                                    secondaryDisplay.setText(totalInt.toInt().toString())
+                                    mainDisplay.setText(totalInt.toInt().toString())
+                                }
+                                else {
+                                    totalInt = inputDisplay.toFloat()
+                                    secondaryDisplay.setText(totalInt.toString())
+                                    mainDisplay.setText(totalInt.toString())
+                                }
                             }
                         }
                     }
