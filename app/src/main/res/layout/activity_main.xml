@@ -50,12 +50,12 @@
 
         <Button
             android:id="@+id/buttonC"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
+            android:backgroundTint="#E1AD9D"
             android:text="C" />
         <Button
             android:id="@+id/buttonBackspace"
@@ -65,7 +65,8 @@
             android:layout_weight="1"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
-            android:text="arrow" />
+            android:drawableLeft="@drawable/backarrow"/>
+
         <Button
             android:id="@+id/buttonDivide"
             android:layout_width="wrap_content"
@@ -76,43 +77,6 @@
             android:backgroundTint="#3EB489"
             android:text="÷" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:paddingBottom="3dp">
-
-        <Button
-            android:id="@+id/buttonDecimal"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
-            android:text="." />
-        <Button
-            android:id="@+id/button0"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
-            android:text="0" />
-
-        <Button
-            android:id="@+id/buttonMultiply"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#3EB489"
-            android:text="x" />
     </LinearLayout>
 
     <LinearLayout
@@ -149,15 +113,16 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
             android:text="9" />
+
         <Button
-            android:id="@+id/buttonSubtract"
+            android:id="@+id/buttonMultiply"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
-            android:text="-" />
+            android:text="x" />
     </LinearLayout>
 
 
@@ -195,15 +160,16 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
             android:text="6" />
+
         <Button
-            android:id="@+id/buttonAdd"
+            android:id="@+id/buttonSubtract"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
-            android:text="+" />
+            android:text="-" />
     </LinearLayout>
 
     <LinearLayout
@@ -240,17 +206,56 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
             android:text="3" />
+
         <Button
-            android:id="@+id/buttonEqual"
+            android:id="@+id/buttonAdd"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#3EB489"
+            android:text="+" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/buttonDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="#3EB489"
+            android:text="." />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="#3EB489"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/buttonEqual"
+            android:layout_width="190dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="#E1AD9D"
             android:text="=" />
-
-
     </LinearLayout>
 
 </LinearLayout>

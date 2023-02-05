@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         var totalInt = 0F
         var lastKeyPressed = ""
         var lastExpressionUsed = ""
-        var isFloatWhole = false
         var toDelete = ""
 
 
